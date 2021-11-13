@@ -7,7 +7,7 @@ const CoffeeStore = () => {
     console.log("router", router.query.id)
     return <div> 
         <p>
-        CoffeStore Page{router.query.id}
+        CoffeStore Page hej mor{router.query.id}
         <Link href="/">
             <p>Back To Home</p>
         </Link>
