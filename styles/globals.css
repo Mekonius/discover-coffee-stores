@@ -24,6 +24,25 @@ a {
   box-sizing: border-box;
 }
 
+/* glass-morphism */
+.glass {
+  background: rgba( 185, 121, 67, 0.4 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 12.5px );
+  -webkit-backdrop-filter: blur( 12.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.glass:hover {
+  background: rgba( 207, 169, 135, 0.35 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 10.5px );
+  -webkit-backdrop-filter: blur( 10.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
 :root{
   --text-brown: rgb(82, 45, 10, 1);
   --text-darkBrown: rgb(49, 27, 6);
