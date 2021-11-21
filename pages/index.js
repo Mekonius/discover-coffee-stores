@@ -1,12 +1,22 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Banner from '../components/banner'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import Banner from "../components/banner";
+import Card from "../components/card";
+// data source
+import CoffeeStores from "../data/coffee-stores.json";
 
-export default function Home() {
-  const handleOnBannerClick = () => {
-
+export async function getStaticProps(context){
+  return {
+    props: {
+      CoffeeStores,
+    }
   }
+}
+
+export default function Home(props) {
+  console.log("props:", props);
+  const handleOnBannerClick = () => {};
 
   return (
     <div className={styles.container}>
@@ -17,18 +27,36 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-        </h1>
-          <Banner buttonText="View stores nearby" 
-          handleOnClick={handleOnBannerClick} 
+        <h1 className={styles.title}></h1>
+        <Banner
+          buttonText="View stores nearby"
+          handleOnClick={handleOnBannerClick}
+        />
+
+        <div className={styles.heroImage}>
+          <Image
+            src="/static/hero-image.png"
+            alt="coffe cat"
+            width={700}
+            height={700}  
           />
+        </div>
 
-          <div className={styles.heroImage}>
-            <Image src='/static/hero-image.png' alt="coffe cat" width={700} height={700} />
-          </div>
-
-          
+        <div className={styles.cardLayout}>
+          {props.CoffeeStores.map((coffeStore) => {
+            return (
+              <Card
+                key={props.id}
+                name={coffeStore.name}
+                imgUrl={coffeStore.imgUrl}
+                href={`/coffee-store/${coffeStore.id}`}
+                className={styles.card}
+              />
+            );
+          })}
+          ;
+        </div>
       </main>
     </div>
-  )
+  );
 }
