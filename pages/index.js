@@ -55,9 +55,8 @@ export default function Home(props) {
                     href={`/coffee-store/${coffeStore.id}`}
                     className={styles.card}
                   />
-                );
+                )
               })}
-              ;
             </div>
           </>
         )}

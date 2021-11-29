@@ -2,7 +2,7 @@ import { getRouteMatcher } from "next/dist/shared/lib/router/utils";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import coffeStoreData from "../../data/coffee-stores.json";
-import Head from "next/Head";
+import Head from "next/head";
 import styles from "../../styles/coffee-stores.module.css";
 import Image from "next/image";
 import cls from "classnames";
