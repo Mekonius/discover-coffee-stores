@@ -4,12 +4,12 @@ import styles from "../styles/Home.module.css";
 import Banner from "../components/banner";
 import Card from "../components/card";
 // data source
-import CoffeeStores from "../data/coffee-stores.json";
+import CoffeeStoresData from "../data/coffee-stores.json";
 
 export async function getStaticProps(context) {
   return {
     props: {
-      CoffeeStores,
+      CoffeeStores: CoffeeStoresData,
     },
   };
 }
@@ -42,7 +42,7 @@ export default function Home(props) {
           />
         </div>
 
-        {CoffeeStores.length > 0 && (
+        {props.CoffeeStores.length > 0 && (
           <>
           <h2 className={styles.heading2}>Toronto Stores</h2>
             <div className={styles.cardLayout}>
