@@ -78,12 +78,8 @@ const CoffeeStore = (props) => {
             <p className={styles.text}>{neighbourhood}</p>
           </div>
           <div className={styles.iconWrapper}>
-            <Image
-              src="/static/Icons/star.svg"
-              width="24"
-              height="24"
-              alt="star icon"
-            />
+            <Image src="/static/icons/star.svg" width="24" height="24" alt="near me"/>
+            <p className={styles.text}>1</p>
           </div>
 
           <button className={styles.upvoteButton}>Up vote</button>
