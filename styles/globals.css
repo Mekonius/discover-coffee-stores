@@ -46,6 +46,7 @@ a {
 :root{
   --text-brown: rgb(82, 45, 10, 1);
   --text-darkBrown: rgb(49, 27, 6);
+  --text-lightBrown: rgb(128, 71, 17);
   --text-white: rgba(229, 231,235,1);
   --text-black: rgba(17,24, 39, 1)
 }

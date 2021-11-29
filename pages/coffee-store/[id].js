@@ -5,6 +5,7 @@ import coffeStoreData from "../../data/coffee-stores.json";
 import Head from "next/Head";
 import styles from "../../styles/coffee-stores.module.css";
 import Image from "next/image";
+import cls from "classnames";
 
 export function getStaticProps(staticProps) {
   const params = staticProps.params;
@@ -39,6 +40,11 @@ const CoffeeStore = (props) => {
   }
 
   const { address, name, neighbourhood, imgUrl } = props.coffeStore;
+
+  const handleUpvoteButton = () => {
+    console.log("Upvote");
+  };
+
   return (
     <div className={styles.layout}>
       <Head>
@@ -62,9 +68,25 @@ const CoffeeStore = (props) => {
             alt={name}
           />
         </div>
-        <div className={styles.col2}>
-          <p>{address}</p>
-          <p>{neighbourhood}</p>
+        <div className={cls("glass", styles.col2)}>
+          <div className={styles.iconWrapper}>
+            <Image src="/static/Icons/places.svg" width="24" height="24" alt="places" />
+            <p className={styles.text}>{address}</p>
+          </div>
+          <div className={styles.iconWrapper}>
+            <Image src="/static/icons/nearMe.svg" width="24" height="24" alt="near me"/>
+            <p className={styles.text}>{neighbourhood}</p>
+          </div>
+          <div className={styles.iconWrapper}>
+            <Image
+              src="/static/Icons/star.svg"
+              width="24"
+              height="24"
+              alt="star icon"
+            />
+          </div>
+
+          <button className={styles.upvoteButton}>Up vote</button>
         </div>
       </div>
     </div>
