@@ -19,7 +19,8 @@ const options = {
   method: 'GET',
   headers: {
     Accept: 'application/json',
-    Authorization: 'fsq3XHcBlCR1uUPGQj4wNnvVMwLwwSTxiV6jwEPgoreloyk='
+    Authorization: 'fsq3XHcBlCR1uUPGQj4wNnvVMwLwwSTxiV6jwEPgoreloyk=',
+    mode: "no-cors"
   }
 };
 fetch('https://api.foursquare.com/v3/autocomplete?query=coffee&ll=56.15443%2C%2010.20531&radius=10000', options)
