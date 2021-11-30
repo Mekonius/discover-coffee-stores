@@ -23,7 +23,7 @@ const options = {
     mode: "no-cors"
   }
 };
-fetch('https://api.foursquare.com/v3/autocomplete?query=coffee&ll=56.15443%2C%2010.20531&radius=10000', options)
+fetch('https://api.foursquare.com/v3/autocomplete?query=coffee&ll=12.34,56.78&radius=10000', options)
   .then(response => response.json())
   .then(response => console.log(response))
   .catch(err => console.error(err));
