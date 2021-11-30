@@ -46,13 +46,13 @@ export default function Home(props) {
           <>
           <h2 className={styles.heading2}>Toronto Stores</h2>
             <div className={styles.cardLayout}>
-              {props.CoffeeStores.map((coffeStore) => {
+              {props.CoffeeStores.map((coffeeStore) => {
                 return (
                   <Card
-                    key={props.id}
-                    name={coffeStore.name}
-                    imgUrl={coffeStore.imgUrl}
-                    href={`/coffee-store/${coffeStore.id}`}
+                    key={coffeeStore.id}
+                    name={coffeeStore.name}
+                    imgUrl={coffeeStore.imgUrl}
+                    href={`/coffee-store/${coffeeStore.id}`}
                     className={styles.card}
                   />
                 )
