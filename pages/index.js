@@ -19,15 +19,14 @@ const options = {
   method: 'GET',
   headers: {
     Accept: 'application/json',
-    Authorization: 'fsq3XHcBlCR1uUPGQj4wNnvVMwLwwSTxiV6jwEPgoreloyk=',
-    mode: "no-cors"
+    Authorization: 'fsq3XHcBlCR1uUPGQj4wNnvVMwLwwSTxiV6jwEPgoreloyk='
   }
 };
-fetch('https://api.foursquare.com/v3/autocomplete?query=coffee&ll=12.34,56.78&radius=10000', options)
+
+fetch('https://api.foursquare.com/v3/places/search?query=coffee%20store&ll=56.15443,10.20531&radius=1000&sort=RATING&limit=10', options)
   .then(response => response.json())
   .then(response => console.log(response))
   .catch(err => console.error(err));
-
 
 export default function Home(props) {
   console.log("props:", props);
