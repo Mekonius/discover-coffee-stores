@@ -3,27 +3,14 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Banner from "../components/banner";
 import Card from "../components/card";
+import { fetchCoffeeStores } from "../lib/coffee-stores";
 // data source
-import CoffeeStoresData from "../data/coffee-stores.json";
-
 export async function getStaticProps(context) {
+  const coffeeStores = await fetchCoffeeStores();
 
-
-  const options = {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      Authorization: "fsq3/wRRwxmD5pLdK5LNHR8S6IGoT9Zxnvfp2Rsci2WxrPs=",
-    },
-  };
-
-  const jsonData = await fetch('https://api.foursquare.com/v3/places/search?query=coffee&ll=56.1577%2C10.2036&radius=1000&limit=6', options)
-  .then(response => response.json())
-  const data = await jsonData;
-  
   return {
     props: {
-      CoffeeStores: data.results
+      coffeeStores,
     },
   };
 }
@@ -55,17 +42,20 @@ export default function Home(props) {
           />
         </div>
 
-        {props.CoffeeStores.length > 0 && (
+        {props.coffeeStores.length > 0 && (
           <>
             <h2 className={styles.heading2}>Toronto Stores</h2>
             <div className={styles.cardLayout}>
-              {props.CoffeeStores.map((coffeeStore) => {
+              {props.coffeeStores.map((coffeeStore) => {
                 return (
                   <Card
                     key={coffeeStore.fsq_id}
                     name={coffeeStore.name}
-                    imgUrl={coffeeStore.imgUrl || 'https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80'}
-                    href={`/coffee-store/${coffeeStore.id}`}
+                    imgUrl={
+                      coffeeStore.imgUrl ||
+                      "https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                    }
+                    href={`/coffee-store/${coffeeStore.fsq_id}`}
                     className={styles.card}
                   />
                 );
