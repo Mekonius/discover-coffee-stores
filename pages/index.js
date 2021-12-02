@@ -7,29 +7,28 @@ import Card from "../components/card";
 import CoffeeStoresData from "../data/coffee-stores.json";
 
 export async function getStaticProps(context) {
+
+
+  const options = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: "fsq3/wRRwxmD5pLdK5LNHR8S6IGoT9Zxnvfp2Rsci2WxrPs=",
+    },
+  };
+
+  const jsonData = await fetch('https://api.foursquare.com/v3/places/search?query=coffee&ll=56.1577%2C10.2036&radius=1000&limit=6', options)
+  .then(response => response.json())
+  const data = await jsonData;
+  
   return {
     props: {
-      CoffeeStores: CoffeeStoresData,
+      CoffeeStores: data.results
     },
   };
 }
 
-
-const options = {
-  method: 'GET',
-  headers: {
-    Accept: 'application/json',
-    Authorization: 'fsq3XHcBlCR1uUPGQj4wNnvVMwLwwSTxiV6jwEPgoreloyk='
-  }
-};
-
-fetch('https://api.foursquare.com/v3/places/search?query=coffee%20store&ll=56.15443,10.20531&radius=1000&sort=RATING&limit=10', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
-
 export default function Home(props) {
-  console.log("props:", props);
   const handleOnBannerClick = () => {};
 
   return (
@@ -58,23 +57,22 @@ export default function Home(props) {
 
         {props.CoffeeStores.length > 0 && (
           <>
-          <h2 className={styles.heading2}>Toronto Stores</h2>
+            <h2 className={styles.heading2}>Toronto Stores</h2>
             <div className={styles.cardLayout}>
               {props.CoffeeStores.map((coffeeStore) => {
                 return (
                   <Card
-                    key={coffeeStore.id}
+                    key={coffeeStore.fsq_id}
                     name={coffeeStore.name}
-                    imgUrl={coffeeStore.imgUrl}
+                    imgUrl={coffeeStore.imgUrl || 'https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80'}
                     href={`/coffee-store/${coffeeStore.id}`}
                     className={styles.card}
                   />
-                )
+                );
               })}
             </div>
           </>
         )}
-
       </main>
     </div>
   );
