@@ -11,6 +11,8 @@ body {
 
     background-position: 50%;
     background-size: cover;
+    background-position-x: 100%;
+    background-position-y: 100%;
     background-repeat: no-repeat;
     color: rgb(82, 45, 10);
     height: 100%;
