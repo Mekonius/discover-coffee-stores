@@ -81,7 +81,7 @@ const CoffeeStore = (props) => {
           <div className={styles.iconWrapper}>
             <Image
               src="/static/Icons/places.svg"
-              width="24"
+              width="25"
               height="24"
               alt="places"
             />
