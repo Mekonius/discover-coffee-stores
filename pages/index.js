@@ -37,7 +37,7 @@ export default function Home(props) {
       <main className={styles.main}>
         <h1 className={styles.title}></h1>
         <Banner
-          buttonText={isFindingLocation ? "Locating..." : "View stores nearby"}
+          buttonText={isFindingLocation ? 'Locating...' : 'View stores nearby'}
           handleOnClick={handleOnBannerClick}
         />
 
