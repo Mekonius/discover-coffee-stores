@@ -43,9 +43,9 @@ const CoffeeStore = (props) => {
     return <div>Loading...</div>;
   }
 
+  console.log("props.coffestore", props);
   
   const { location, name, neighborhood, imgUrl, locality, address } = props.coffeStore;
-  console.log("props.coffestore", props);
   
   const handleUpvoteButton = () => {
     console.log("Upvote");
