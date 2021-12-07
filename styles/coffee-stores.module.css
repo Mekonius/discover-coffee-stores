@@ -62,6 +62,7 @@
     align-self: center;
     margin-top: 4rem /* 64px */;
     color: var(--text-lightBrown);
+    background-position-y: 100%;
   }
   
   .iconWrapper {

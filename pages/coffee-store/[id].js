@@ -15,7 +15,7 @@ export async function getStaticProps(staticProps) {
   return {
     props: {
       coffeStore: coffeeStores.find((coffeeStore) => {
-        return coffeeStore.fsq_id === params.id; //dynamic id
+        return coffeeStore.id.toString() === params.id; //dynamic id
       }),
     },
   };
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
   const paths = coffeeStores.map((coffeeStore) => {
     return {
       params: {
-        id: coffeeStore.fsq_id,
+        id: coffeeStore.id.toString(),
       },
     };
   });
@@ -43,10 +43,8 @@ const CoffeeStore = (props) => {
     return <div>Loading...</div>;
   }
 
-  console.log("props.coffestore", props);
-  
-  const { location, name, neighborhood, imgUrl, locality, address } = props.coffeStore;
-  
+  const { name, neighborhood, imgUrl, locality, address } = props.coffeStore;
+
   const handleUpvoteButton = () => {
     console.log("Upvote");
   };
@@ -78,34 +76,38 @@ const CoffeeStore = (props) => {
           />
         </div>
         <div className={cls("glass", styles.col2)}>
-          <div className={styles.iconWrapper}>
-            <Image
-              src="/static/Icons/places.svg"
-              width="25"
-              height="24"
-              alt="places"
-            />
-            <p className={styles.text}>{location.address}</p>
-          </div>
-          <div className={styles.iconWrapper}>
-            <Image
-              src="/static/Icons/places.svg"
-              width="24"
-              height="24"
-              alt="places"
-            />
-            <p className={styles.text}>{location.locality}</p>
-          </div>
-          {location.neighborhood && (<div className={styles.iconWrapper}>
-            <Image
-              src="/static/icons/nearMe.svg"
-              width="24"
-              height="24"
-              alt="near me"
-            />
-            <p className={styles.text}>{location.neighborhood}</p>
-          </div>
+          {address && (
+            <div className={styles.iconWrapper}>
+              <Image
+                src="/static/Icons/places.svg"
+                width="25"
+                height="24"
+                alt="places"
+              />
+              <p className={styles.text}>{address}</p>
+            </div>
           )}
+
+          <div className={styles.iconWrapper}>
+            <Image
+              src="/static/Icons/places.svg"
+              width="24"
+              height="24"
+              alt="places"
+            />
+            <p className={styles.text}>{locality}</p>
+          </div>
+          {neighborhood && (
+            <div className={styles.iconWrapper}>
+              <Image
+                src="/static/icons/nearMe.svg"
+                width="24"
+                height="24"
+                alt="near me"
+              />
+              <p className={styles.text}>{neighborhood}</p>
+            </div>
+          ) || <p>There is no content</p>}
           <div className={styles.iconWrapper}>
             <Image
               src="/static/icons/star.svg"
@@ -115,7 +117,6 @@ const CoffeeStore = (props) => {
             />
             <p className={styles.text}>1</p>
           </div>
-
           <button className={styles.upvoteButton}>Up vote</button>
         </div>
       </div>
