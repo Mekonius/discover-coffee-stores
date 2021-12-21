@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
 const useTrackLocation = () => {
   const [locationErrorMsg, setLocationErrorMsg] = useState("");
@@ -10,7 +10,7 @@ const useTrackLocation = () => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    setLatLong(`${latitude}, ${longitude}`);
+    setLatLong(`${latitude},${longitude}`);
     setLocationErrorMsg("");
     setIsFindingLocation(false);
   };
