@@ -78,7 +78,7 @@ export default function Home(props) {
 
         {coffeeStores.length > 0 && (
           <>
-            <h2 className={styles.heading2}>Coffee Stores near you</h2>
+            <h2 className={styles.heading2}>Resturants near you</h2>
             <div className={styles.cardLayout}>
               {coffeeStores.map((coffeeStore) => {
                 return (
@@ -100,7 +100,7 @@ export default function Home(props) {
 
         {props.coffeeStores.length > 0 && (
           <>
-            <h2 className={styles.heading2}>Londons coffee Stores</h2>
+            <h2 className={styles.heading2}>Resturants in Londons</h2>
             <div className={styles.cardLayout}>
               {props.coffeeStores.map((coffeeStore) => {
                 return (
