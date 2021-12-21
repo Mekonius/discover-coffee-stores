@@ -21,15 +21,14 @@ export async function getStaticProps() {
 export default function Home(props) {
   const {handleTrackLocation, latLong, locationErrorMsg, isFindingLocation  } = useTrackLocation(); 
 
-  const [coffeeStores, setCoffeeStores] = useState('');
+  const [coffeeStores, setCoffeeStores] = useState("");
 
-  const [coffeeStoresError, setCoffeeStoresError] = useState(null);
-
-
+  const [coffeeStoresError, setCoffeeStoresError] = useState();
 
 
-  useEffect(() => {
-    async function fetchData(){
+
+
+  useEffect(async () => {
       if(latLong){
         try{
           const fetchedCoffeStores = await fetchCoffeeStores(latLong);
@@ -42,8 +41,7 @@ export default function Home(props) {
           setCoffeeStoresError(error,message);
         }
       }
-    }
-    
+  
 
 
   }, [latLong])
