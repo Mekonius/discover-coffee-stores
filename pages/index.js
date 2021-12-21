@@ -28,20 +28,25 @@ export default function Home(props) {
 
 
 
-  useEffect(async () => {
-    if(latLong){
-      try{
-        const fetchedCoffeStores = await fetchCoffeeStores(latLong);
-        setCoffeeStores(fetchedCoffeStores);
-      }
-      catch(error){
-        //set error
-        console.log({ error });
-        setCoffeeStoresError(error,message);
+  useEffect(() => {
+    async function fetchData(){
+      if(latLong){
+        try{
+          const fetchedCoffeStores = await fetchCoffeeStores(latLong);
+          setCoffeeStores(fetchedCoffeStores);
+          //set coffee stores
+        }
+        catch(error){
+          //set error
+          console.log({ error });
+          setCoffeeStoresError(error,message);
+        }
       }
     }
+    
 
-  }),[latLong]
+
+  }, [latLong])
 
   const handleOnBannerClick = () => { 
     handleTrackLocation();
@@ -97,7 +102,7 @@ export default function Home(props) {
 
         {props.coffeeStores.length > 0 && (
           <>
-            <h2 className={styles.heading2}>London's coffee Stores</h2>
+            <h2 className={styles.heading2}>London&lsquo;s coffee Stores</h2>
             <div className={styles.cardLayout}>
               {props.coffeeStores.map((coffeeStore) => {
                 return (
