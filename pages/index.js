@@ -102,7 +102,7 @@ export default function Home(props) {
 
         {props.coffeeStores.length > 0 && (
           <>
-            <h2 className={styles.heading2}>London&lsquo;s coffee Stores</h2>
+            <h2 className={styles.heading2}>London&#39;s coffee Stores</h2>
             <div className={styles.cardLayout}>
               {props.coffeeStores.map((coffeeStore) => {
                 return (
